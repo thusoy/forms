@@ -177,13 +177,13 @@ test('email', function (t) {
         t.error(err, '"quoted"@example.com');
     });
     v('form', { data: '"quoted spaced"@example.com' }, function (err) {
-        t.error(err, '"quoted spaced"@example.com');
+        t.equal(err, 'Please enter a valid email address.', '"quoted spaced"@example.com');
     });
     v('form', { data: '"quoted@at"@example.com' }, function (err) {
-        t.error(err, '"quoted@at"@example.com');
+        t.equal(err, 'Please enter a valid email address.', '"quoted@at"@example.com');
     });
-    v('form', { data: '"aaaaaaaaaaaaaaaaaaaaaaaaa' }, function (err) {
-        t.equal(err, 'Please enter a valid email address.', '"aaaaaaaaaaaaaaaaaaaaaaaaa');
+    v('form', { data: '"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' }, function (err) {
+        t.equal(err, 'Please enter a valid email address.', 'lots of a‘s');
     });
     t.end();
 });
