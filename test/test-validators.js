@@ -162,15 +162,15 @@ test('email', function (t) {
     t.plan(3);
     validators.email('Email was invalid.')('form', { data: 'asdf' }, function (invalidEmailError) {
         t.equal(invalidEmailError, 'Email was invalid.');
-        var v = validators.email();
-        v('form', { data: 'asdf@asdf.com' }, function (noError) {
-            t.equal(noError, undefined);
-            v('form', { data: 'a←+b@f.museum' }, function (err) {
-                t.equal(err, undefined);
-                t.end();
-            });
-        });
     });
+    var v = validators.email();
+    v('form', { data: 'asdf@asdf.com' }, function (noError) {
+        t.equal(noError, undefined);
+    });
+    v('form', { data: 'a←+b@f.museum' }, function (err) {
+        t.equal(err, undefined);
+    });
+    t.end();
 });
 
 test('url', function (t) {
