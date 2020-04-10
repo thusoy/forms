@@ -43,6 +43,7 @@
         "object.assign": "^4.1.0",
         "qs": "^6.9.1",
         "reduce": "^1.0.2",
+        "sane-email-validation": "^3.0.1",
         "string.prototype.trim": "^1.2.1"
     },
     "devDependencies": {
