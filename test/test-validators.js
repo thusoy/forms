@@ -159,7 +159,7 @@ test('regexp', function (t) {
 });
 
 test('email', function (t) {
-    t.plan(3);
+    t.plan(5);
     validators.email('Email was invalid.')('form', { data: 'asdf' }, function (invalidEmailError) {
         t.equal(invalidEmailError, 'Email was invalid.');
     });
@@ -169,6 +169,12 @@ test('email', function (t) {
     });
     v('form', { data: 'a←+b@f.museum' }, function (err) {
         t.equal(err, undefined);
+    });
+    v('form', { data: 'asdf(with comments)@example.com' }, function (err) {
+        t.equal(err, 'Please enter a valid email address.');
+    });
+    v('form', { data: '"quoted"@example.com' }, function (err) {
+        t.equal(err, 'Please enter a valid email address.');
     });
     t.end();
 });
